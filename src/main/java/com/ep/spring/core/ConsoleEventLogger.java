@@ -1,7 +1,7 @@
 package com.ep.spring.core;
 
-public class ConsoleEventLogger {
-    public void logEvent(String msg) {
-        System.out.println(msg);
+public class ConsoleEventLogger implements EventLogger{
+    public void logEvent(Event event) {
+        System.out.println(event.getMsg());
     }
 }
