@@ -29,4 +29,14 @@ public class Event {
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", msg='" + msg + '\'' +
+                ", date=" + date +
+                ", df=" + df +
+                '}';
+    }
 }

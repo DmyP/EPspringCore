@@ -1,5 +1,6 @@
 package com.ep.spring.core;
 
+import com.ep.spring.core.Loggers.ConsoleEventLogger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
