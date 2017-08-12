@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="consoleEventLogger" class="com.ep.spring.core.loggers.ConsoleEventLogger"/>
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="
+ 		http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+ 		http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
-    <bean id="fileEventLogger" class="com.ep.spring.core.loggers.FileEventLogger" init-method="init">
-        <constructor-arg value="C:\java\EPspringcore\src\main\resources\logg.txt"/>
+<bean id="consoleEventLogger" class="com.ep.spring.core.loggers.ConsoleEventLogger" p:name="Console logger"/>
+
+    <bean id="fileEventLogger" class="com.ep.spring.core.loggers.FileEventLogger" init-method="init" p:name="File logger">
+      <!--  <constructor-arg value="C:\java\EPspringcore\src\main\resources\logg.txt"/>-->
+        <constructor-arg value="/Users/inna/IdeaProjects/EPspringCore/src/main/resources/logg.txt"/>
     </bean>
 
     <bean id="cacheFileEventLogger" class="com.ep.spring.core.loggers.CacheFileEventLogger" parent="fileEventLogger" destroy-method="destroy" >
         <constructor-arg index="1" value="10"/>
+        <property name="name" value="#{fileEventLogger.name + ' with cache'}"/>
     </bean>
 
     <bean id="combinedEventLogger" class="com.ep.spring.core.loggers.CombinedEventLogger">
@@ -19,6 +29,7 @@
                 <ref bean="fileEventLogger"/>
             </list>
         </constructor-arg>
+        <property name="name" value="#{'Combined ' + combinedEventLogger.loggers.![name].toString()}"/>
     </bean>
 
 </beans>

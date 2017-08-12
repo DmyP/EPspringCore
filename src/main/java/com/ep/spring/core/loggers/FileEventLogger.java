@@ -4,7 +4,7 @@ import com.ep.spring.core.Event;
 import java.io.*;
 import org.apache.commons.io.FileUtils;
 
-public class FileEventLogger implements EventLogger {
+public class FileEventLogger extends AbstractLogger {
 
     private File file;
     private String filename;

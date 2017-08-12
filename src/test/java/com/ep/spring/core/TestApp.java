@@ -1,5 +1,6 @@
 package com.ep.spring.core;
 
+import com.ep.spring.core.loggers.AbstractLogger;
 import com.ep.spring.core.loggers.EventLogger;
 import com.ep.spring.core.loggers.EventType;
 import org.junit.Test;
@@ -75,7 +76,7 @@ public class TestApp {
         method.invoke(app, event, message);
     }
 
-    private class MockLogger implements EventLogger {
+    private class MockLogger extends AbstractLogger{
 
         private Event event;
 

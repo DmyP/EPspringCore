@@ -8,6 +8,16 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.Map;
 
 public class App {
+    private String startupMessage;
+
+    public String getStartupMessage() {
+        return startupMessage;
+    }
+
+    public void setStartupMessage(String startupMessage) {
+        this.startupMessage = startupMessage;
+    }
+
     private Client client;
     private EventLogger defaultLogger;
     private Map<EventType, EventLogger> loggers;
@@ -15,6 +25,7 @@ public class App {
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("springConfig.xml");
         App app = (App) ctx.getBean("app");
+        System.out.println(app.startupMessage);
 
         Event event = ctx.getBean(Event.class);
         app.logEvent(EventType.INFO, event, "Some event for 1");
@@ -47,5 +58,9 @@ public class App {
         }
 
         logger.logEvent(event);
+    }
+
+    public EventLogger getDefaultLogger() {
+        return defaultLogger;
     }
 }
