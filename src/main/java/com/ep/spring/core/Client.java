@@ -2,7 +2,8 @@ package com.ep.spring.core;
 
 public class Client {
     private String id;
-    private String  fullName;
+    private String fullName;
+    private String gr;
 
     public Client(String id, String fullName) {
         this.id = id;
@@ -26,5 +27,9 @@ public class Client {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public void setGreeting(String gr){
+        this.gr = gr;
     }
 }

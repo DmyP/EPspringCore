@@ -2,24 +2,23 @@ package com.ep.spring.core;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Event {
+
+    private static final AtomicInteger AUTO_ID = new AtomicInteger(0);
+
     private int id;
     private String msg;
     private Date date;
-    private DateFormat df;
+
+    private DateFormat dateFormat;
 
     public Event(Date date, DateFormat df) {
-        this.id = (int) (Math.random() * 100);
-        this.date = date;
-        this.df = df;
-    }
+        this.id = AUTO_ID.getAndIncrement();
 
-    public Event(String msg, Date date, DateFormat df) {
-        this.id = (int) (Math.random() * 100);
-        this.msg = msg;
         this.date = date;
-        this.df = df;
+        this.dateFormat = df;
     }
 
     public String getMsg() {
@@ -30,13 +29,17 @@ public class Event {
         this.msg = msg;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
     @Override
     public String toString() {
-        return "Event{" +
-                "id=" + id +
-                ", msg='" + msg + '\'' +
-                ", date=" + date +
-                ", df=" + df +
-                '}';
+        return "Event [id=" + id + ", msg=" + msg + ", date=" + dateFormat.format(date) + "]";
     }
+
 }

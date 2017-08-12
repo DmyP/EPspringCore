@@ -1,0 +1,1 @@
+Event{id=56, msg='Some Error event', date=Sat Aug 12 05:03:15 EEST 2017, df=java.text.SimpleDateFormat@79fd1708}

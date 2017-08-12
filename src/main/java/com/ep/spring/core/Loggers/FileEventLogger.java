@@ -1,37 +1,34 @@
 package com.ep.spring.core.Loggers;
 
 import com.ep.spring.core.Event;
-
 import java.io.*;
+import org.apache.commons.io.FileUtils;
 
 public class FileEventLogger implements EventLogger {
-    private String fileName;
+
     private File file;
+    private String filename;
 
-    public void init() throws IOException{
-        this.file = new File(fileName);
+    public FileEventLogger(String filename) {
+        this.filename = filename;
+    }
 
+    public void init() throws IOException {
+        file = new File(filename);
+        if (file.exists() && !file.canWrite()) {
+            throw new IllegalArgumentException("Can't write to file " + filename);
+        } else if (!file.exists()) {
+            file.createNewFile();
+        }
     }
 
     @Override
     public void logEvent(Event event) {
         try {
-            PrintWriter out = new PrintWriter(fileName);
-            out.write(event.toString());
-        } catch (FileNotFoundException e) {
+            FileUtils.writeStringToFile(file, event.toString() + "\n", true);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public FileEventLogger(String fileName) {
-        this.fileName = fileName;
-    }
-
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
 }
