@@ -1,1 +1,2 @@
-Event{id=56, msg='Some Error event', date=Sat Aug 12 05:03:15 EEST 2017, df=java.text.SimpleDateFormat@79fd1708}
+Event{id=56, msg='Some Error event', date=Sat Aug 12 05:03:15 EEST 2017, df=java.text.SimpleDateFormat@79fd1708}Event [id=1, msg=Some event for John Smith, date=12.08.2017 6:42:15]
+Event [id=2, msg=Some event for 3, date=12.08.2017 6:42:15]

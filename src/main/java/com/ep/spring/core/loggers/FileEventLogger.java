@@ -1,4 +1,4 @@
-package com.ep.spring.core.Loggers;
+package com.ep.spring.core.loggers;
 
 import com.ep.spring.core.Event;
 import java.io.*;

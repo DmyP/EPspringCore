@@ -1,4 +1,4 @@
-package com.ep.spring.core.Loggers;
+package com.ep.spring.core.loggers;
 
 import com.ep.spring.core.Event;
 import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
@@ -7,7 +7,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.xml.crypto.Data;
 import java.io.PrintStream;
 import java.text.DateFormat;
 import java.util.Date;

@@ -10,13 +10,13 @@
 
     <bean id="app" class="com.ep.spring.core.App">
         <constructor-arg ref="client"/>
-        <constructor-arg ref="eventLogger"/>
-       <!-- <constructor-arg>
+        <constructor-arg ref="cacheFileEventLogger"/>
+        <constructor-arg>
             <map>
-                <entry key="INFO" value-ref="eventLogger"/>
+                <entry key="INFO" value-ref="consoleEventLogger"/>
                 <entry key="ERROR" value-ref="combinedEventLogger"/>
             </map>
-        </constructor-arg>-->
+        </constructor-arg>
     </bean>
 
     <import resource="loggers.xml"/>

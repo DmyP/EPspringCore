@@ -1,17 +1,19 @@
-package com.ep.spring.core.Loggers;
+package com.ep.spring.core.loggers;
 
 import com.ep.spring.core.Event;
 
+import java.util.Collection;
 import java.util.List;
 
 public class CombinedEventLogger implements EventLogger {
-    private List<EventLogger> loggers;
+    private Collection<EventLogger> loggers;
 
-    public List<EventLogger> getLoggers() {
+    public Collection<EventLogger> getLoggers() {
         return loggers;
     }
 
     public CombinedEventLogger(List<EventLogger> loggers) {
+        super();
         this.loggers = loggers;
     }
 

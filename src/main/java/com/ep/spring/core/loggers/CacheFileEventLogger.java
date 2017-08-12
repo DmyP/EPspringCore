@@ -1,4 +1,4 @@
-package com.ep.spring.core.Loggers;
+package com.ep.spring.core.loggers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ public class CacheFileEventLogger extends FileEventLogger {
     public CacheFileEventLogger(String filename, int cacheSize) {
         super(filename);
         this.cacheSize = cacheSize;
-        this.cache = new ArrayList<Event>(cacheSize);
+        this.cache = new ArrayList<>(cacheSize);
     }
 
     public void destroy() {
@@ -33,7 +33,7 @@ public class CacheFileEventLogger extends FileEventLogger {
     }
 
     private void writeEventsFromCache() {
-        cache.stream().forEach(super::logEvent);
+        cache.forEach(super::logEvent);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.ep.spring.core.Loggers;
+package com.ep.spring.core.loggers;
 
     import static org.junit.Assert.assertFalse;
     import static org.junit.Assert.assertTrue;
