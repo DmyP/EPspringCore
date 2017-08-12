@@ -50,10 +50,8 @@
         <constructor-arg>
             <bean class="java.util.Date"/>
         </constructor-arg>
-        <constructor-arg ref="dateFormat"/>
+        <constructor-arg value="#{T(java.text.DateFormat).getDateTimeInstance()}" />
     </bean>
-
-    <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance" />
 
     <bean id="monitor" class="com.ep.spring.core.util.Monitor"/>
 

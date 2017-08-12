@@ -37,6 +37,26 @@ public class Event {
         return date;
     }
 
+    public static AtomicInteger getAutoId() {
+        return AUTO_ID;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public DateFormat getDateFormat() {
+        return dateFormat;
+    }
+
+    public void setDateFormat(DateFormat dateFormat) {
+        this.dateFormat = dateFormat;
+    }
+
     @Override
     public String toString() {
         return "Event [id=" + id + ", msg=" + msg + ", date=" + dateFormat.format(date) + "]";
