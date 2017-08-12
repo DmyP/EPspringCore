@@ -5,7 +5,7 @@
     <bean id="consoleEventLogger" class="com.ep.spring.core.loggers.ConsoleEventLogger"/>
 
     <bean id="fileEventLogger" class="com.ep.spring.core.loggers.FileEventLogger" init-method="init">
-        <constructor-arg value="C:\java\EPspringcore\src\main\java\com\ep\spring\core\logg.txt"/>
+        <constructor-arg value="C:\java\EPspringcore\src\main\resources\logg.txt"/>
     </bean>
 
     <bean id="cacheFileEventLogger" class="com.ep.spring.core.loggers.CacheFileEventLogger" parent="fileEventLogger" destroy-method="destroy" >

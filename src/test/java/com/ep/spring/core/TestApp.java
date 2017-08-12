@@ -64,7 +64,7 @@ public class TestApp {
 
         invokeLogEvent(app, EventType.INFO, event, MSG + " 0");
         assertNull(defaultLogger.getEvent());
-        assertNotNull(infoLogger.getEvent());;
+        assertNotNull(infoLogger.getEvent());
     }
 
     
