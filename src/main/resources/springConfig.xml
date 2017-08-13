@@ -27,13 +27,10 @@
           c:id="${id}"
           c:fullName="${name}"
           p:greeting="${greeting}"/>
-
-    <!--Same, without namespace
-        <bean id="client" class="com.ep.spring.core.Client">
+            <!--Same, without namespace
             <constructor-arg value="1"/>
             <constructor-arg value="John Smith"/>
-            <property name="greeting" value="Hello there!"/>
-        </bean>-->
+            <property name="greeting" value="Hello there!"/>-->
 
     <util:map id="loggerMap">
         <entry key="INFO" value-ref="consoleEventLogger" />
@@ -41,8 +38,9 @@
     </util:map>
 
     <bean id="app" class="com.ep.spring.core.App">
-        <constructor-arg ref="client"/>
-        <constructor-arg value="#{T(com.ep.spring.core.Event).isDay(8, 17) ? cacheFileEventLogger : consoleEventLogger}"/>
+        <constructor-arg value="#{client}"/>
+        <!--<constructor-arg ref="client"/>-->
+        <constructor-arg value="#{T(com.ep.spring.core.Event).isDay(7, 17) ? cacheFileEventLogger : consoleEventLogger}"/>
         <constructor-arg ref="loggerMap"/>
         <property name="startupMessage" value="#{'Hello user '
             + (systemProperties['os.arch'].equals('x86') ? systemEnvironment['USERNAME'] : systemEnvironment['USER'] )

@@ -63,4 +63,12 @@ public class App {
     public EventLogger getDefaultLogger() {
         return defaultLogger;
     }
+
+    public Map<EventType, EventLogger> getLoggers() {
+        return loggers;
+    }
+
+    public void setLoggers(Map<EventType, EventLogger> loggers) {
+        this.loggers = loggers;
+    }
 }

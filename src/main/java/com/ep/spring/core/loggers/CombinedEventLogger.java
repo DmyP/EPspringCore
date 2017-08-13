@@ -5,6 +5,7 @@ import com.ep.spring.core.Event;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class CombinedEventLogger extends AbstractLogger {
     private Collection<EventLogger> loggers;
@@ -29,6 +30,4 @@ public class CombinedEventLogger extends AbstractLogger {
         }
 
     }
-
-
 }
