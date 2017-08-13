@@ -1,6 +1,6 @@
 package com.ep.spring.core.loggers;
 
-import com.ep.spring.core.Event;
+import com.ep.spring.core.beans.Event;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;

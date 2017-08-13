@@ -1,12 +1,13 @@
 package com.ep.spring.core.loggers;
 
-import com.ep.spring.core.Event;
+import com.ep.spring.core.beans.Event;
 import java.io.*;
 import org.apache.commons.io.FileUtils;
 
 public class FileEventLogger extends AbstractLogger {
 
     private File file;
+
     private String filename;
 
     public FileEventLogger(String filename) {

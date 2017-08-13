@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.ep.spring.core.Client;
+import com.ep.spring.core.beans.Client;
 import com.ep.spring.core.loggers.CacheFileEventLogger;
 import com.ep.spring.core.loggers.CombinedEventLogger;
 import com.ep.spring.core.loggers.EventLogger;
@@ -19,7 +19,7 @@ public class TestContext {
     @Test
     public void testPropertyPlaceholderSystemOverride() {
         System.setProperty("id", "35");
-        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("springConfig.xml");
+        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
         Client client = ctx.getBean(Client.class);
         ctx.close();
 
@@ -28,7 +28,7 @@ public class TestContext {
 
     @Test
     public void testLoggersNames() {
-        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("springConfig.xml");
+        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 
         EventLogger fileLogger = ctx.getBean("fileEventLogger", FileEventLogger.class);
         EventLogger cacheLogger = ctx.getBean(CacheFileEventLogger.class);

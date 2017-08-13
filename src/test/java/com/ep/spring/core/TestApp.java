@@ -1,8 +1,10 @@
 package com.ep.spring.core;
 
+import com.ep.spring.core.beans.Client;
+import com.ep.spring.core.beans.Event;
 import com.ep.spring.core.loggers.AbstractLogger;
 import com.ep.spring.core.loggers.EventLogger;
-import com.ep.spring.core.loggers.EventType;
+import com.ep.spring.core.beans.EventType;
 import org.junit.Test;
 
 import java.lang.reflect.InvocationTargetException;

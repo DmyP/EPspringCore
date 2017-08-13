@@ -13,7 +13,7 @@ package com.ep.spring.core.loggers;
     import org.junit.Before;
     import org.junit.Test;
 
-    import com.ep.spring.core.Event;
+    import com.ep.spring.core.beans.Event;
 
 public class TestFileEventLogger {
 

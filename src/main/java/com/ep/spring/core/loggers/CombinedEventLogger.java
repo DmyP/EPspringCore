@@ -1,33 +1,28 @@
 package com.ep.spring.core.loggers;
 
-import com.ep.spring.core.Event;
+import com.ep.spring.core.beans.Event;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
-import java.util.logging.Logger;
 
 public class CombinedEventLogger extends AbstractLogger {
-    private Collection<EventLogger> loggers;
 
-    public CombinedEventLogger(List<EventLogger> loggers) {
+    private final Collection<EventLogger> loggers;
+
+    public CombinedEventLogger(Collection<EventLogger> loggers) {
         super();
         this.loggers = loggers;
+    }
+
+    @Override
+    public void logEvent(Event event) {
+        for (EventLogger eventLogger : loggers) {
+            eventLogger.logEvent(event);
+        }
     }
 
     public Collection<EventLogger> getLoggers() {
         return Collections.unmodifiableCollection(loggers);
     }
 
-    public void setLoggers(List<EventLogger> loggers) {
-        this.loggers = loggers;
-    }
-
-    @Override
-    public void logEvent(Event event) {
-        for (EventLogger eventLogger : loggers){
-            eventLogger.logEvent(event);
-        }
-
-    }
 }

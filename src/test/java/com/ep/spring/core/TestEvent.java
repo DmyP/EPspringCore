@@ -1,5 +1,6 @@
 package com.ep.spring.core;
 
+import com.ep.spring.core.beans.Event;
 import org.junit.Assert;
 import org.junit.Test;
 

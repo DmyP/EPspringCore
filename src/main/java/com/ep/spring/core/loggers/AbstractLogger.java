@@ -1,7 +1,5 @@
 package com.ep.spring.core.loggers;
 
-import com.ep.spring.core.Event;
-
 public abstract class AbstractLogger implements EventLogger{
     private String name;
 

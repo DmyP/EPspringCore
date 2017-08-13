@@ -1,6 +1,6 @@
 package com.ep.spring.core.loggers;
 
-import com.ep.spring.core.Event;
+import com.ep.spring.core.beans.Event;
 
 public class ConsoleEventLogger extends AbstractLogger{
     @Override

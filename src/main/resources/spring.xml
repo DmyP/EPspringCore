@@ -23,7 +23,7 @@
         </property>
     </bean>
 
-    <bean id="client" class="com.ep.spring.core.Client"
+    <bean id="client" class="com.ep.spring.core.beans.Client"
           c:id="${id}"
           c:fullName="${name}"
           p:greeting="${greeting}"/>
@@ -40,14 +40,14 @@
     <bean id="app" class="com.ep.spring.core.App">
         <constructor-arg value="#{client}"/>
         <!--<constructor-arg ref="client"/>-->
-        <constructor-arg value="#{T(com.ep.spring.core.Event).isDay(7, 17) ? cacheFileEventLogger : consoleEventLogger}"/>
+        <constructor-arg value="#{T(com.ep.spring.core.beans.Event).isDay(7, 17) ? cacheFileEventLogger : consoleEventLogger}"/>
         <constructor-arg ref="loggerMap"/>
         <property name="startupMessage" value="#{'Hello user '
             + (systemProperties['os.arch'].equals('x86') ? systemEnvironment['USERNAME'] : systemEnvironment['USER'] )
             + '. Default logger is ' + app.defaultLogger.name }"/>
     </bean>
 
-    <bean id="event" class="com.ep.spring.core.Event" scope="prototype">
+    <bean id="event" class="com.ep.spring.core.beans.Event" scope="prototype">
         <constructor-arg value="#{new java.util.Date()}"/>
         <constructor-arg value="#{T(java.text.DateFormat).getDateTimeInstance()}" />
     </bean>
