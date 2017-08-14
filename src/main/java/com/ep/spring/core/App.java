@@ -41,7 +41,7 @@ public class App {
         ctx.close();
     }
 
-    App(Client client, EventLogger eventLogger, Map<EventType, EventLogger> loggers) {
+    public App(Client client, EventLogger eventLogger, Map<EventType, EventLogger> loggers) {
         super();
         this.client = client;
         this.defaultLogger = eventLogger;
