@@ -1,5 +1,6 @@
 package com.ep.spring.core;
 
+import com.ep.spring.core.aspects.StatisticsAspect;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -20,6 +21,8 @@ public class App {
 
     private String startupMessage;
 
+    private StatisticsAspect statisticsAspect;
+
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
         App app = (App) ctx.getBean("app");
@@ -37,6 +40,9 @@ public class App {
 
         event = ctx.getBean(Event.class);
         app.logEvent(null, event, "Some event for 3");
+
+        app.setStatisticsAspect(ctx.getBean(StatisticsAspect.class));
+        app.outputLoggingCounter();
 
         ctx.close();
     }
@@ -60,8 +66,21 @@ public class App {
         logger.logEvent(event);
     }
 
+    private void outputLoggingCounter() {
+        if (statisticsAspect != null) {
+            System.out.println("Loggers statistics. Number of calls: " + statisticsAspect.getCounterMap().size());
+            for (Map.Entry<Class<?>, Integer> entry: statisticsAspect.getCounterMap().entrySet()) {
+                System.out.println("    " + entry.getKey().getSimpleName() + ": " + entry.getValue());
+            }
+        }
+    }
+
     public void setStartupMessage(String startupMessage) {
         this.startupMessage = startupMessage;
+    }
+
+    public void setStatisticsAspect(StatisticsAspect statisticsAspect) {
+        this.statisticsAspect = statisticsAspect;
     }
 
     public EventLogger getDefaultLogger() {
