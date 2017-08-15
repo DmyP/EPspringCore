@@ -41,6 +41,9 @@ public class App {
         event = ctx.getBean(Event.class);
         app.logEvent(null, event, "Some event for 3");
 
+        event = ctx.getBean(Event.class);
+        app.logEvent(null, event, "Some event for 4");
+
         app.setStatisticsAspect(ctx.getBean(StatisticsAspect.class));
         app.outputLoggingCounter();
 

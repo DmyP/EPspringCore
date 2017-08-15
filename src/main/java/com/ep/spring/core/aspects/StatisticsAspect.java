@@ -1,13 +1,9 @@
 package com.ep.spring.core.aspects;
 
-import com.ep.spring.core.beans.Event;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import com.ep.spring.core.loggers.ConsoleEventLogger.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +19,7 @@ public class StatisticsAspect {
     @AfterReturning("allLogEventMethods()")
     public void count(JoinPoint joinPoint){
         Class<?> clazz = joinPoint.getTarget().getClass();
-        System.out.println("I'm in static aspect in - " + clazz);
+        System.out.println("I'm in statistic counter aspect in - " + clazz);
         if (!counterMap.containsKey(clazz)) {
             counterMap.put(clazz, 1);
         } else {

@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -34,17 +35,17 @@ public class TestCacheFileEventLogger {
         CacheFileEventLogger logger = new CacheFileEventLogger(file.getAbsolutePath(), 2);
         logger.init();
 
-        String contents = FileUtils.readFileToString(this.file);
+        String contents = FileUtils.readFileToString(this.file, Charset.defaultCharset());
         assertTrue("File is empty initially", contents.isEmpty());
 
         logger.logEvent(event);
 
-        contents = FileUtils.readFileToString(this.file);
+        contents = FileUtils.readFileToString(this.file, Charset.defaultCharset());
         assertTrue("File is empty as events in cache", contents.isEmpty());
 
         logger.logEvent(event);
 
-        contents = FileUtils.readFileToString(this.file);
+        contents = FileUtils.readFileToString(this.file, Charset.defaultCharset());
         assertFalse("File not empty, cache was dumped", contents.isEmpty());
     }
 
@@ -55,17 +56,17 @@ public class TestCacheFileEventLogger {
         CacheFileEventLogger logger = new CacheFileEventLogger(file.getAbsolutePath(), 2);
         logger.init();
 
-        String contents = FileUtils.readFileToString(this.file);
+        String contents = FileUtils.readFileToString(this.file, Charset.defaultCharset());
         assertTrue("File is empty initially", contents.isEmpty());
 
         logger.logEvent(event);
 
-        contents = FileUtils.readFileToString(this.file);
+        contents = FileUtils.readFileToString(this.file, Charset.defaultCharset());
         assertTrue("File is empty as events in cache", contents.isEmpty());
 
         logger.destroy();
 
-        contents = FileUtils.readFileToString(this.file);
+        contents = FileUtils.readFileToString(this.file, Charset.defaultCharset());
         assertFalse("File not empty, cache was dumped", contents.isEmpty());
     }
 

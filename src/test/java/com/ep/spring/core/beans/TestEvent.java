@@ -1,4 +1,4 @@
-package com.ep.spring.core;
+package com.ep.spring.core.beans;
 
 import com.ep.spring.core.beans.Event;
 import org.junit.Assert;

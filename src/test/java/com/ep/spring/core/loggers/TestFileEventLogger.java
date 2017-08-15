@@ -5,6 +5,7 @@ package com.ep.spring.core.loggers;
 
     import java.io.File;
     import java.io.IOException;
+    import java.nio.charset.Charset;
     import java.text.DateFormat;
     import java.util.Date;
 
@@ -48,12 +49,12 @@ public class TestFileEventLogger {
         FileEventLogger logger = new FileEventLogger(file.getAbsolutePath());
         logger.init();
 
-        String contents = FileUtils.readFileToString(this.file);
+        String contents = FileUtils.readFileToString(this.file, Charset.defaultCharset());
         assertTrue(contents.isEmpty());
 
         logger.logEvent(event);
 
-        contents = FileUtils.readFileToString(this.file);
+        contents = FileUtils.readFileToString(this.file, Charset.defaultCharset());
         assertFalse(contents.isEmpty());
     }
 
