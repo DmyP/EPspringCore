@@ -13,7 +13,6 @@ public class App {
     }
 
     public App() {
-
     }
 
     public void logEvent(String msg) {
@@ -22,16 +21,9 @@ public class App {
     }
 
     public static void main(String[] args) {
-//        App app = new App();
-//        app.client = new Client("1", "John Smith");
-//        app.eventLogger = new ConsoleEventLogger();
-//
-//        app.logEvent("Some event for user 1");
-
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("springConfig.xml");
-  App app = (App) ctx.getBean("app");
-  app.logEvent("Some event for 1");
-  app.logEvent("Some event for 2");
-
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+        App app = (App) ctx.getBean("app");
+        app.logEvent("Some event for 1");
+        app.logEvent("Some event for 2");
     }
 }
