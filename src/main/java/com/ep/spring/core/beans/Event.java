@@ -2,6 +2,7 @@ package com.ep.spring.core.beans;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Event {
     private int id;
@@ -9,8 +10,10 @@ public class Event {
     private Date date;
     private DateFormat df;
 
+    private static final AtomicInteger AUTO_ID = new AtomicInteger(0);
+
     public Event(Date date, DateFormat df) {
-        this.id = (int) (Math.random() * 100);
+        this.id = AUTO_ID.incrementAndGet();
         this.date = date;
         this.df = df;
     }
@@ -21,6 +24,14 @@ public class Event {
 
     public String getMsg() {
         return msg;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Date getDate() {
+        return date;
     }
 
     @Override
