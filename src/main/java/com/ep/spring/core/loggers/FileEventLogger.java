@@ -20,6 +20,15 @@ public class FileEventLogger implements EventLogger {
         }
     }
 
+    @Override
+    public void logEvent(Event event) {
+        try {
+            FileUtils.writeStringToFile(file, event.getMsg(), Charset.defaultCharset(),false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public FileEventLogger(String fileName) {
         this.fileName = fileName;
     }
@@ -32,12 +41,4 @@ public class FileEventLogger implements EventLogger {
         this.fileName = fileName;
     }
 
-    @Override
-    public void logEvent(Event event) {
-        try {
-            FileUtils.writeStringToFile(file, event.getMsg(), Charset.defaultCharset(),false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
