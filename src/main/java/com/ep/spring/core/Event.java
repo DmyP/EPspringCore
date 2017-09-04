@@ -9,10 +9,10 @@ public class Event {
     private Date date;
     private DateFormat df;
 
-    public Event(Date date, DateFormat dateTimeInstance) {
+    public Event(Date date, DateFormat df) {
         this.id = (int) (Math.random() * 100);
         this.date = date;
-        this.df = dateTimeInstance;
+        this.df = df;
     }
 
     public void setMsg(String msg) {
@@ -28,8 +28,7 @@ public class Event {
         return "Event{" +
                 "id=" + id +
                 ", message='" + msg + '\'' +
-                ", date=" + date +
-                ", df=" + df +
+                ", date=" + df.format(date) +
                 '}';
     }
 }
