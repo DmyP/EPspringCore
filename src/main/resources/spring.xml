@@ -2,14 +2,14 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="client" class="com.ep.spring.core.Client">
+   <import resource="loggers.xml"/>
+
+    <bean id="client" class="com.ep.spring.core.beans.Client">
         <constructor-arg value="1"/>
         <constructor-arg value="John Smith"/>
     </bean>
 
-    <bean id="eventLogger" class="com.ep.spring.core.ConsoleEventLogger"/>
-
-    <bean id="event" class="com.ep.spring.core.Event" scope="prototype">
+    <bean id="event" class="com.ep.spring.core.beans.Event" scope="prototype">
         <constructor-arg>
             <bean class="java.util.Date"/>
         </constructor-arg>

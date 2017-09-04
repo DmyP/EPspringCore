@@ -1,5 +1,8 @@
 package com.ep.spring.core;
 
+import com.ep.spring.core.beans.Client;
+import com.ep.spring.core.beans.Event;
+import com.ep.spring.core.loggers.ConsoleEventLogger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
