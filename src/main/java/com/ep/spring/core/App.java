@@ -25,11 +25,11 @@ public class App {
         event = ctx.getBean(Event.class);
         app.logEvent(EventType.ERROR, event, "Some event for 2");
 
+        Client client = ctx.getBean(Client.class);
+        System.out.println("Client says: " + client.getGr());
         event = ctx.getBean(Event.class);
         app.logEvent(null, event, "Some event for 3");
 
-        Client client = ctx.getBean(Client.class);
-        System.out.println("Client says: " + client.getGr());
         ctx.close();
     }
 
@@ -44,10 +44,9 @@ public class App {
         event.setMsg(message);
 
         EventLogger logger = loggers.get(eventType);
-        if (logger == null) {
+        if (logger == null){
             logger = defaultLogger;
         }
         logger.logEvent(event);
     }
-
 }

@@ -40,6 +40,6 @@ public class Event {
                 "id=" + id +
                 ", message='" + msg + '\'' +
                 ", date=" + df.format(date) +
-                '}';
+                "}\n";
     }
 }
