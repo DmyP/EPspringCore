@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:utils="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd">
 
     <bean id="consoleEventLogger" class="com.ep.spring.core.loggers.ConsoleEventLogger"/>
 
-    <bean id="fileEventLogger" class="com.ep.spring.core.loggers.FileEventLogger" init-method="init">
-        <constructor-arg value="target/events_log.txt"/>
-    </bean>
+    <bean id="fileEventLogger" class="com.ep.spring.core.loggers.FileEventLogger" init-method="init"
+            c:fileName="target/events_log.txt"/>
 
     <bean id="cacheFileEventLogging" class="com.ep.spring.core.loggers.CacheFileEventLogger"
-          parent="fileEventLogger" destroy-method="destroy">
-        <constructor-arg value="5"/>
-    </bean>
+          parent="fileEventLogger" c:filename="target/events_log.txt" c:cacheSize="2" destroy-method="destroy"/>
 
-    <bean id="combinedEventLogger" class="com.ep.spring.core.loggers.CombinedEventLogger">
-        <constructor-arg>
-            <list>
-                <ref bean="consoleEventLogger"/>
-                <ref bean="fileEventLogger"/>
-            </list>
-        </constructor-arg>
-    </bean>
+    <bean id="combinedEventLogger" class="com.ep.spring.core.loggers.CombinedEventLogger" c:loggers-ref="loggersList"/>
+
+    <utils:list id="loggersList">
+        <list>
+            <ref bean="consoleEventLogger"/>
+            <ref bean="fileEventLogger"/>
+        </list>
+    </utils:list>
 </beans>

@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
-       xmlns:p="http://www.springframework.org/schema/p" xmlns:c="http://www.springframework.org/schema/c"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util.xsd">
     <import resource="loggers.xml"/>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
@@ -19,7 +24,6 @@
     <bean id="event" class="com.ep.spring.core.beans.Event" scope="prototype"
           c:date-ref="data" c:df="#{T(java.text.DateFormat).getDateTimeInstance()}"/>
 
-
     <util:map id="loggerMap">
         <entry key="INFO" value-ref="consoleEventLogger" />
         <entry key="ERROR" value-ref="combinedEventLogger" />
@@ -30,7 +34,6 @@
     <util:list id="prop">
         <value>classpath:client.properties</value>
     </util:list>
-
 
     <!--
      <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
